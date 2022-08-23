@@ -1,20 +1,24 @@
 import { useEffect } from 'react';
-import { connect } from 'react-redux'; 
-import { Col } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 import {Searcher} from './components/Searcher.jsx';
 import {PokemonList} from './components/PokemonList.jsx';
 import { get150Pokemon } from './api/index.js';
-import { setPokemons as setPokemonsActions } from './actions/index.js';
+import { setPokemons } from './actions/index.js';
 import logo from './statics/logo.svg';
+import { Col } from 'antd';
 import './App.css';
 
-function App(props) {
-  const {pokemons, setPokemons} = props;
+function App() {
+
+  // Get Pokemon from State:
+  const pokemons = useSelector(state => state.pokemons);
+  // Dispatcher
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPokemon = async ()=> {
       const pokemonRes = await get150Pokemon();
-      setPokemons(pokemonRes);
+      dispatch(setPokemons(pokemonRes));
     };
 
     fetchPokemon();
@@ -33,12 +37,4 @@ function App(props) {
   );
 };
 
-const mapStateToProps = ( state ) => ({
-  pokemons: state.pokemons,
-}); // Is a function that receiver our State and return an Object with props, ht will be send to che component.
-
-const mapDispatchToProps = ( dispatch )=>({
-  setPokemons: (value) => dispatch(setPokemonsActions(value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
