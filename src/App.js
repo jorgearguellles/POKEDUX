@@ -12,7 +12,7 @@ function App() {
 
   // Get Pokemon from State:
   const pokemons = useSelector(state => state.pokemons);
-  // Dispatcher
+  // Dispatcher reference:
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <Col span={6} offset={10}>
-        <img src={logo} alt='Pokedux logo'/>
+        <img src={logo} alt='Pokédux logo'/>
       </Col>
       <Col span={8} offset={8}>
         <Searcher />
