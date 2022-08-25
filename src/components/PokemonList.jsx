@@ -7,7 +7,7 @@ export const PokemonList = (props) => {
     return(
         <div className="pokemonList">
             {pokemons.map((pokemon) => {
-                return <PokemonCard name={pokemon.name} key={pokemon.name} url={pokemon.url}/>
+                return <PokemonCard name={pokemon.name} key={pokemon.name} image={pokemon.sprites.front_default}/>
             })}
         </div>
     )
