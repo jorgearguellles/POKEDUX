@@ -10,7 +10,7 @@ export const pokemonsReducers = (state = initialState, action) => {
             return { ...state, pokemons: action.payload }
         case SET_LOADING:
             return { ...state, loading: action.payload }
-        default: 
+        default:
             return state;
     }
 };
