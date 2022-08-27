@@ -11,9 +11,9 @@ import './App.css';
 function App() {
 
   // Get Pokemon from State:
-  const pokemons = useSelector(state => state.pokemons);
+  const pokemons = useSelector(state => state.get('pokemons').toJS());
   // Get loading value from State:
-  const loading = useSelector(state => state.loading)
+  const loading = useSelector(state => state.get('loading'));
   // Dispatcher reference:
   const dispatch = useDispatch();
 
