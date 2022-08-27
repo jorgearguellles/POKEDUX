@@ -1,7 +1,8 @@
 import { Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import { useDispatch } from 'react-redux';
-import { setFavoritePokemon } from '../actions';
+// import { setFavoritePokemon } from '../actions';
+import { setFavorite } from '../slices/dataSlice';
 import { StartButton } from './StartButton';
 
 // Helper function
@@ -15,7 +16,7 @@ export const PokemonCard = (props) => {
     const nameCapitalized = firstCapitalLetter(name);
 
     const handleOnFavoritePokemon = () =>{
-        dispatch(setFavoritePokemon({pokemonId: id}))
+        dispatch(setFavorite({pokemonId: id}))
     };
 
     return (
