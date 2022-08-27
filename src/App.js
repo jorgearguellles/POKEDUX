@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Searcher } from './components/Searcher.jsx';
 import { PokemonList } from './components/PokemonList.jsx';
 import { get150Pokemons } from './api/index.js';
@@ -11,9 +11,9 @@ import './App.css';
 function App() {
 
   // Get Pokemon from State:
-  const pokemons = useSelector(state => state.get('pokemons').toJS());
+  const pokemons = useSelector(state => state.getIn(['data', 'pokemons'], shallowEqual).toJS());
   // Get loading value from State:
-  const loading = useSelector(state => state.get('loading'));
+  const loading = useSelector(state => state.get(['ui', 'loading']));
   // Dispatcher reference:
   const dispatch = useDispatch();
 
